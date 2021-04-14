@@ -157,11 +157,11 @@
             <span>고객에 대한 이해와 데이터를 바탕으로</span>
             <span>고객의 더 나은 삶과 특별한 경험을 만들어 나갑니다</span>
           </p>
-          
         </div>
         <span>SCROLL</span>
+
       </section>
-      <section id="main-story" class="page swipe">
+      <section id="main-story" class="page">
         <h2>
           Designing Life Together
           <em>INSIDE STORY</em>
@@ -392,7 +392,7 @@
 <script>
 'use strict';
 
-var timerSpeed = 2000; // main visual text event 몇 초 마다 반복하는지 설정
+var timerSpeed = 2500; // main visual text event 몇 초 마다 반복하는지 설정
 
 // main page scroll event
 var numPage = $('.page').length;
@@ -404,23 +404,17 @@ var isBlocked = false; // 스크롤 이벤트에 관련해서 튕겨낼 때 (디
 
 
 // main visual text event
-setInterval(function() {
-  var state = $('#animation').attr('class');
-  switch (state) {
-    case 'default':
-      $('#animation').attr({class: 'human'});
-      break;
-    case 'human':
-      $('#animation').attr({class: 'data'});
-      break;
-    case 'data':
-      $('#animation').attr({class: 'gs'});
-      break;
-    case 'gs':
-      $('#animation').attr({class: 'default'});
-      break;
-  }
-}, timerSpeed);
+setTimeout(function() {
+  setInterval(function() {
+    var state = $('#animation').attr('class');
+    switch (state) {
+      case 'default': $('#animation').attr({class: 'human'}); break;
+      case 'human': $('#animation').attr({class: 'data'}); break;
+      case 'data': $('#animation').attr({class: 'gs'}); break;
+      case 'gs': $('#animation').attr({class: 'default'}); break;
+    }
+  }, timerSpeed);
+}, 3000);
 
 
 // 스크롤 이벤트는 pc에서 만 적용
@@ -461,8 +455,21 @@ function showPage(n) {
   pagePrev = (n <= 1) ? 1 : (n - 1);
   pageNext = (n >= numPage) ? numPage : (n + 1);
 
+  // 스크롤에 따라 header와 indicator 색상 변화
+  if(pageNow % 2) {
+    $('#header').attr({class: ''});
+    $('#page-indicator').attr({class: ''});
+  }
+  else {
+    $('#header').attr({class: 'dark'});
+    $('#page-indicator').attr({class: 'dark'});
+  }
   // footer가 보일 시 page indicator 숨겨주기
-  pageNow === numPage ? $('#page-indicator').addClass('on') : $('#page-indicator').removeClass('on');
+  if(pageNow === numPage) {
+    $('#header').addClass('dark footer'); 
+    $('#page-indicator').attr({class: 'on'});
+  }
+  else $('#page-indicator').removeClass('on');
 }
 
 
@@ -500,7 +507,6 @@ function textSlide(selector, first) {
     slideNext = (n === numSlide) ? 2 : n + 1;
   }
 }
-
 </script>
 </body>
 </html>
