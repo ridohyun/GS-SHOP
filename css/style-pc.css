@@ -95,32 +95,33 @@ body {font-family: 'Metropolis', sans-serif; font-weight: 400; font-size: 16px; 
 body.main #main > section {height: 100vh;}
 body.main #main > .btn-onair {position: fixed; right: 15px; top: 50%; width: 85px; height: 85px; transform: translate(0, calc(-50% - 120px)); z-index: 1000; border-radius: 50%; box-shadow: 20px 20px 30px 0 rgb(0 0 0 / 10%);}
 body.main #main > .btn-onair > img {width: 100%;}
-body.main #main > ul.indicator {position: fixed; right: 50px; top: 50%; transform: translate(0, -50%); z-index: 1000;}
-body.main #main > ul.indicator > li + li {margin-top: 18px;}
-body.main #main > ul.indicator > li > a {display: block; width: 12px; height: 12px; text-indent: -9999px; overflow: hidden; border: 2px solid #ffffff; border-radius: 50%; box-sizing: border-box; opacity: 0.4;}
-body.main #main > ul.indicator > li.on > a {background: #ffffff; opacity: 1;}
-body.main #main > ul.indicator.dark > li > a {border-color: #333333;}
-body.main #main > ul.indicator.dark > li.on > a {background: #333333;}
+body.main #main > #page-indicator {position: fixed; right: 50px; top: 50%; transform: translate(0, -50%); z-index: 1000; transition: 0.3s;}
+body.main #main > #page-indicator > li + li {margin-top: 18px;}
+body.main #main > #page-indicator > li > a {display: block; width: 12px; height: 12px; text-indent: -9999px; overflow: hidden; border: 2px solid #ffffff; border-radius: 50%; box-sizing: border-box; opacity: 0.4;}
+body.main #main > #page-indicator > li.on > a {background: #ffffff; opacity: 1;}
+body.main #main > #page-indicator.dark > li > a {border-color: #333333;}
+body.main #main > #page-indicator.dark > li.on > a {background: #333333;}
+body.main #main > #page-indicator.on {transform: translate(66px, -50%);}
 
 #main-visual {position: relative; overflow: hidden; min-height: 750px;}
-#main-visual > div.animation {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 500px; color: rgba(255, 255, 255, 0.2);}
-#main-visual > div.animation > h2 {font-size: 80px; font-weight: 700; text-align: center; margin-bottom: 30px;}
-#main-visual > div.animation > h2 > em {position: relative ;}
-#main-visual > div.animation > h2 > em + em {display: block; margin-top: 60px;}
-#main-visual > div.animation > h2 > em + em::before {content: ''; position: absolute; left: 50%; top: -50%; transform: translate(-50%, 50%); width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);}
-#main-visual > div.animation > h2 > em > span {font-weight: 400;}
-#main-visual > div.animation > p {position: relative;}
-#main-visual > div.animation > p > span {position: absolute; font-size: 20px; color: #ffffff;display: none; width: 100%; text-align: center;}
+#main-visual #animation {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 500px; color: rgba(255, 255, 255, 0.2);}
+#main-visual #animation > h2 {font-size: 80px; font-weight: 700; text-align: center; margin-bottom: 30px;}
+#main-visual #animation > h2 > em {position: relative ;}
+#main-visual #animation > h2 > em + em {display: block; margin-top: 60px;}
+#main-visual #animation > h2 > em + em::before {content: ''; position: absolute; left: 50%; top: -50%; transform: translate(-50%, 50%); width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);}
+#main-visual #animation > h2 > em > span {font-weight: 400;}
+#main-visual #animation > p {position: relative;}
+#main-visual #animation > p > span {position: absolute; font-size: 20px; color: #ffffff; display: none; width: 100%; text-align: center; animation: main-visual-effect 0.2s ease-in;}
 
-#main-visual > div.animation.default {color: #ffffff;}
-#main-visual > div.animation.human > h2 > em:first-child {color: #ffffff}
-#main-visual > div.animation.human > p > span:first-child {display: block;}
-#main-visual > div.animation.data > h2 > em:nth-child(2) {color: #ffffff}
-#main-visual > div.animation.data > p > span:nth-child(2) {display: block;}
-#main-visual > div.animation.gs > h2 > em:nth-child(3) {color: #ffffff}
-#main-visual > div.animation.gs > p > span:nth-child(3) {display: block;}
+#main-visual #animation.default {color: #ffffff;}
+#main-visual #animation.human > h2 > em:first-child {color: #ffffff}
+#main-visual #animation.human > p > span:first-child {display: block;}
+#main-visual #animation.data > h2 > em:nth-child(2) {color: #ffffff}
+#main-visual #animation.data > p > span:nth-child(2) {display: block;}
+#main-visual #animation.gs > h2 > em:nth-child(3) {color: #ffffff}
+#main-visual #animation.gs > p > span:nth-child(3) {display: block;}
 #main-visual > span {position: absolute; left: 50%; bottom: 60px; transform: translate(-50%, 0); font-size: 15px;  font-weight: 700; color: #ffffff; }
-#main-visual > span::before {content: ''; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; border-radius: 50px; background: #ffffff;animation: scroll-effect 0.5s linear 0s infinite alternate forwards;}
+#main-visual > span::before {content: ''; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; border-radius: 50px; background: #ffffff; animation: scroll-effect 0.5s linear 0s infinite alternate forwards;}
 #main-visual > span::after {content: ''; display: block; width: 24px; height: 38px; border: 2px solid #ffffff; border-radius: 30px; box-sizing: border-box; margin: 10px auto 0;}
 
 #main-story {position: relative; overflow: hidden;}
@@ -498,6 +499,11 @@ div.layout-box.row {padding: 0;}
 @keyframes scroll-effect {
   0% {transform: translate(-50%, calc(-50% + 2px));}
   100% {transform: translate(-50%, calc(-50% + 12px));}
+}
+
+@keyframes main-visual-effect {
+  0% {opacity: 0; transform: translate(0, 150%);}
+  100% {opacity: 1; transform: none;}
 }
 
 
