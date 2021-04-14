@@ -74,30 +74,33 @@ body {font-family: 'Metropolis', sans-serif; font-weight: 400; font-size: 16px; 
 /* main */
 .btn-onair {position: fixed; bottom: 20px; right: 15px; width: 50px; height: 50px; z-index: 1000;}
 #main-visual {height: 100vh; position: relative; overflow: hidden; background: url(../img/main-visual-01.jpg) center no-repeat; background-size: cover;}
-#main-visual > div.animation {position: absolute; left: 50%; top: 120px; transform: translate(-50%, 0); width: 500px; color: rgba(255, 255, 255, 0.2);}
-#main-visual > div.animation > h2 {font-size: 65px; font-weight: 700; text-align: center; margin-bottom: 30px;}
-#main-visual > div.animation > h2 > em {position: relative ;}
-#main-visual > div.animation > h2 > em + em {display: block; margin-top: 30px;}
-#main-visual > div.animation > h2 > em + em::before {content: ''; position: absolute; left: 50%; top: -50%; transform: translate(-50%, 50%); width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);}
-#main-visual > div.animation > h2 > em > span {font-weight: 400;}
-#main-visual > div.animation > p {position: relative;}
-#main-visual > div.animation > p > span {position: absolute; font-size: 16px; color: #ffffff;display: none; width: 100%; text-align: center;}
+#main-visual > #animation {position: absolute; left: 50%; top: 120px; transform: translate(-50%, 0); width: 500px; color: rgba(255, 255, 255, 0.2);}
+#main-visual > #animation > h2 {font-size: 65px; font-weight: 700; text-align: center; margin-bottom: 30px;}
+#main-visual > #animation > h2 > em {position: relative; display: block; opacity: 0;}
+#main-visual #animation > h2 > em:first-child {animation: show-up 0.8s ease-out 0.5s 1 normal forwards;}
+#main-visual #animation > h2 > em:nth-child(2) {animation: show-up 0.8s ease-out 0.7s 1 normal forwards;}
+#main-visual #animation > h2 > em:nth-child(3) {animation: show-up 0.8s ease-out 0.9s 1 normal forwards;}
+#main-visual > #animation > h2 > em + em {margin-top: 30px;}
+#main-visual > #animation > h2 > em + em::before {content: ''; position: absolute; left: 50%; top: -50%; transform: translate(-50%, 50%); width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);}
+#main-visual > #animation > h2 > em > span {font-weight: 400;}
+#main-visual > #animation > p {position: relative;}
+#main-visual > #animation > p > span {position: absolute; font-size: 16px; color: #ffffff;display: none; width: 100%; text-align: center; animation: main-visual-effect 0.2s ease-in;}
 
-#main-visual > div.animation.default {color: #ffffff;}
-#main-visual > div.animation.human > h2 > em:first-child {color: #ffffff}
-#main-visual > div.animation.human > p > span:first-child {display: block;}
-#main-visual > div.animation.data > h2 > em:nth-child(2) {color: #ffffff}
-#main-visual > div.animation.data > p > span:nth-child(2) {display: block;}
-#main-visual > div.animation.gs > h2 > em:nth-child(3) {color: #ffffff}
-#main-visual > div.animation.gs > p > span:nth-child(3) {display: block;}
+#main-visual > #animation.default {color: #ffffff;}
+#main-visual > #animation.human > h2 > em:first-child {color: #ffffff}
+#main-visual > #animation.human > p > span:first-child {display: block;}
+#main-visual > #animation.data > h2 > em:nth-child(2) {color: #ffffff}
+#main-visual > #animation.data > p > span:nth-child(2) {display: block;}
+#main-visual > #animation.gs > h2 > em:nth-child(3) {color: #ffffff}
+#main-visual > #animation.gs > p > span:nth-child(3) {display: block;}
 #main-visual > span {position: absolute; left: 50%; bottom: 30px; transform: translate(-50%, 0); font-size: 12px;  font-weight: 700; color: #ffffff; }
-#main-visual > span::before {content: ''; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; border-radius: 50px; background: #ffffff;animation: scroll-effect 0.5s linear 0s infinite alternate forwards;}
+#main-visual > span::before {content: ''; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; border-radius: 50px; background: #ffffff; animation: scroll-effect 0.5s linear 0s infinite alternate forwards;}
 #main-visual > span::after {content: ''; display: block; width: 24px; height: 38px; border: 2px solid #ffffff; border-radius: 30px; box-sizing: border-box; margin: 10px auto 0;}
 
 @media screen and (max-width: 500px) {
-	#main-visual > div.animation > h2 {font-size: 42px;}
-	#main-visual > div.animation > p > span {font-size: 15px;}
-	#main-visual > div.animation > h2 > em + em::before {transform: translate(-50%, 0);}
+	#main-visual > #animation > h2 {font-size: 42px;}
+	#main-visual > #animation > p > span {font-size: 15px;}
+	#main-visual > #animation > h2 > em + em::before {transform: translate(-50%, 0);}
 }
 
 
@@ -264,7 +267,7 @@ div.layout-box.row {padding: 0;}
 	#main-ir .row > .bg ul {font-size: 16px;}
 
 	#main-ir div.layout {height: auto;}
-  #main-ir div.layout-box {float: none; width: 380px; margin: 0 auto; }
+	#main-ir div.layout-box {float: none; width: 380px; margin: 0 auto; }
 	#main-ir div.layout-box.col {height: 240px; padding: 38px 30px 0;}
 	#main-ir div.layout div.col em.title {font-size: 18px;}
 	#main-ir div.layout-box > div {padding: 38px 30px 0; height: 190px;}
@@ -334,21 +337,26 @@ div.layout-box.row {padding: 0;}
 	#footer-menu > button.family > ul {width: 100%;}
 	#footer > ul > li + li {margin-left: 0;}
 	#footer > ul > li {margin-right: 20px;}
-
-
 }
+
 @media screen and (max-width: 450px) {
 	#footer-menu > a {top: 86px;}
 }
 
 
-
 /* animation keyframes */
+@keyframes show-up {
+	0% {transform: translate(0, 100px); opacity: 0;}
+	100% {transform: translate(0, 0); opacity: 1;}
+  }
 @keyframes scroll-effect {
     0% {transform: translate(-50%, calc(-50% + 2px));}
     100% {transform: translate(-50%, calc(-50% + 12px));}
 }
-
+@keyframes main-visual-effect {
+	0% {opacity: 0; transform: translate(0, 150%);}
+	100% {opacity: 1; transform: none;}
+  }
 
 
 
@@ -381,7 +389,7 @@ html {font-family: 'NanumSquare', '맑은 고딕', 'malgun gothic', '돋움', Do
 
 }
 
-img.arrow {animation: arrow-effect 0.5s ease 0s infinite alternate forwards;}
+img.arr#animation: arrow-effect 0.5s ease 0s infinite alternate forwards;}
 @keyframes arrow-effect {
     0% {left: 0; opacity: 1;}
     100% {left: 10px; opacity: 0.6;}
