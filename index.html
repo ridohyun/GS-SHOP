@@ -146,7 +146,7 @@
         <video class="pc" autoplay muted loop poster="./img/main-visual-01.jpg">
           <source src="./video/main-video.mp4" />
         </video>
-        <div class="animation human">
+        <div id="animation" class="default">
           <h2>
             <em>HUMAN</em>
             <em>DATA</em>
@@ -161,7 +161,6 @@
         </div>
         <span>SCROLL</span>
       </section>
-
       <section id="main-story" class="page swipe">
         <h2>
           Designing Life Together
@@ -210,7 +209,6 @@
         </p>
         <div class="status"><span></span></div>
       </section>
-      
       <section id="main-culture" class="page">
         <video class="pc" autoplay muted loop poster="./img/main-visual-01.jpg">
           <source src="./video/main-culture.mp4" />
@@ -265,7 +263,6 @@
           </li>
         </ul>
       </section>
-      
       <section id="main-news" class="page">
         <div id="news-wrapper">
           <div>
@@ -306,7 +303,6 @@
           </ul>
         </div>
       </section>
-
       <section id="main-ir" class="page">
         <div class="title">
           <h2>IR</h2>
@@ -351,7 +347,7 @@
       </section>
     </main>
 
-    <footer id="footer">
+    <footer id="footer" class="page">
       <ul class="link">
         <li><a href="#">개인정보처리방침</a></li>
         <li><a href="#">이용약관</a></li>
@@ -396,53 +392,49 @@
 <script>
 'use strict';
 
+var timerSpeed = 2000; // main visual text event 몇 초 마다 반복하는지 설정
+
 // main page scroll event
-var numPage = $('#main > section.page').length;
+var numPage = $('.page').length;
 var pageNow = 0;
 var pagePrev = 0;
 var pageNext = 0;
 var scrollEvent = ('onmousewheel' in window) ? 'mousewheel' : 'DOMMouseScroll';
-var isBlocked = false;
+var isBlocked = false; // 스크롤 이벤트에 관련해서 튕겨낼 때 (디바운스 사용)
 
-// pc에서 만 적용
+
+// main visual text event
+setInterval(function() {
+  var state = $('#animation').attr('class');
+  switch (state) {
+    case 'default':
+      $('#animation').attr({class: 'human'});
+      break;
+    case 'human':
+      $('#animation').attr({class: 'data'});
+      break;
+    case 'data':
+      $('#animation').attr({class: 'gs'});
+      break;
+    case 'gs':
+      $('#animation').attr({class: 'default'});
+      break;
+  }
+}, timerSpeed);
+
+
+// 스크롤 이벤트는 pc에서 만 적용
 if($(window).width() > 1024) {
   showPage(1);
-  
-  $('#page-indicator > li > a').on('click', function() {
-    var index = $('#page-indicator > li').index($(this).parent());
-    showPage(index + 1);
-  });
-  
-  window.addEventListener(scrollEvent, function(e) {
-    e.preventDefault();
-    if (isBlocked === true) return false;
-    isBlocked = true;
-    var delta = 0;
-    if (scrollEvent === 'mousewheel') {
-      delta = e.wheelDelta / -120;
-    } else {
-      delta = e.detail / 3;
-    }
-    if (delta > 0) {
-      showPage(pageNext);
-    } else if (delta < 0) {
-      showPage(pagePrev);
-    }
-  }, {'passive': false});
-}
 
-$(window).on('resize', function() {
-  if($(window).width() > 1024) {
-  showPage(1);
-  
   $('#page-indicator > li > a').on('click', function() {
     var index = $('#page-indicator > li').index($(this).parent());
     showPage(index + 1);
   });
-  
+
   window.addEventListener(scrollEvent, function(e) {
     e.preventDefault();
-    if (isBlocked === true) return false;
+    if (isBlocked === true) return false; // 두번째 부터 여기서 튕겨나감
     isBlocked = true;
     var delta = 0;
     if (scrollEvent === 'mousewheel') {
@@ -457,10 +449,9 @@ $(window).on('resize', function() {
     }
   }, {'passive': false});
 }
-});
 
 function showPage(n) {
-  var scrollAmt = $('section.page:eq(' + (n - 1) + ')').offset().top;
+  var scrollAmt = $('.page:eq(' + (n - 1) + ')').offset().top;
   $('html').stop(true).animate({'scrollTop': scrollAmt}, 500, function() {
     isBlocked = false;
   });
@@ -469,6 +460,9 @@ function showPage(n) {
   pageNow = n;
   pagePrev = (n <= 1) ? 1 : (n - 1);
   pageNext = (n >= numPage) ? numPage : (n + 1);
+
+  // footer가 보일 시 page indicator 숨겨주기
+  pageNow === numPage ? $('#page-indicator').addClass('on') : $('#page-indicator').removeClass('on');
 }
 
 
