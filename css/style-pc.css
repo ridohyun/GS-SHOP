@@ -58,7 +58,7 @@ body {font-family: 'Metropolis', sans-serif; font-weight: 400; font-size: 16px; 
 #top-menu > .chevron > i {color: #ffffff;}
 #top-menu > .chevron > i + i {display: none;}
 
-/* #header.dark {background: #ffffff;} */
+#header.dark.footer {background: #ffffff;}
 #header.open:before {height: 360px;}
 #header.open:after {opacity: 1;}
 #header.dark h1 a img,
@@ -106,8 +106,11 @@ body.main #main > #page-indicator.on {transform: translate(66px, -50%);}
 #main-visual {position: relative; overflow: hidden; min-height: 750px;}
 #main-visual #animation {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 500px; color: rgba(255, 255, 255, 0.2);}
 #main-visual #animation > h2 {font-size: 80px; font-weight: 700; text-align: center; margin-bottom: 30px;}
-#main-visual #animation > h2 > em {position: relative ;}
-#main-visual #animation > h2 > em + em {display: block; margin-top: 60px;}
+#main-visual #animation > h2 > em {position: relative; display: block; opacity: 0;}
+#main-visual #animation > h2 > em:first-child {animation: show-up 0.8s ease-out 0.5s 1 normal forwards;}
+#main-visual #animation > h2 > em:nth-child(2) {animation: show-up 0.8s ease-out 0.7s 1 normal forwards;}
+#main-visual #animation > h2 > em:nth-child(3) {animation: show-up 0.8s ease-out 0.9s 1 normal forwards;}
+#main-visual #animation > h2 > em + em { margin-top: 60px;}
 #main-visual #animation > h2 > em + em::before {content: ''; position: absolute; left: 50%; top: -50%; transform: translate(-50%, 50%); width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);}
 #main-visual #animation > h2 > em > span {font-weight: 400;}
 #main-visual #animation > p {position: relative;}
@@ -132,8 +135,8 @@ body.main #main > #page-indicator.on {transform: translate(66px, -50%);}
 #main-story > p.control {position: absolute; left: 50px; bottom: 316px; width: 1370px;}
 #main-story > p.control > a.prev {float: left;}
 #main-story > p.control > a.next {float: right;}
-#main-story > p.control > a {width: 120px; height: 120px; font-size: 40px; line-height: 120px; text-align: center; border-radius: 50%; color: #ffffff; background: rgba(0, 0, 0, 0.2);}
-#main-story > p.control > a.on {background: rgba(0, 0, 0, 0.5);}
+#main-story > p.control > a {width: 120px; height: 120px; font-size: 40px; line-height: 120px; text-align: center; border-radius: 50%; color: #ffffff; background: rgba(0, 0, 0, 0.2); pointer-events: none;}
+#main-story > p.control > a.on {background: rgba(0, 0, 0, 0.5); pointer-events: initial;}
 #main-story > a.more {position: absolute; left: 240px; bottom: 182px;}
 #main-story > ul {position: absolute; width: 2090px; left: 770px; top: 50%; transform: translate(0, -10%);}
 #main-story > ul > li {float: left; width: 500px; height: 304px; background: url(../img/main-story-01.jpg) center top no-repeat; background-size: 100%;}
@@ -301,16 +304,12 @@ body.sub.manage.environment #header.dark {background: #ffffff;}
 #lnb > ol > li.nav.open > ul {border: 1px solid #e5e5e5; padding: 14px 0; height: auto;}
 
 
-
-
-
 /* sub */
 body.environment #main > section + section {padding: 120px 5% 140px; margin: 0 auto; box-sizing: border-box;}
 body.environment .title {font-size: 35px; font-weight: 700; text-align: center;}
 body.environment p.desc {font-size: 18px; color: #555555; line-height: 30px; font-weight: 300; margin-top: 32px;}
 body.environment em.sub-title {display: block; font-size: 24px; font-weight: 700; margin: 70px auto 0;}
 body.environment em.sub-title + p.desc {margin: 20px auto 0;}
-
 
 body.environment #intro > em.title {display: block; margin-bottom: 75px;}
 body.environment #intro > ul.value {color: #666666; font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 160px;}
@@ -367,11 +366,6 @@ body.environment #activity dl > dt {padding: 60px 0 80px 0;}
 body.environment #activity dl > dd {padding: 0 5%;}
 body.environment #activity dl > dt:nth-child(3) {padding-top: 100px; background: #f5f5f5;}
 body.environment #activity dl > dd:nth-child(4) {background: #f5f5f5;}
-
-
-
-
-
 body.environment #activity dl > dt > h4 {font-size: 42px; font-weight: 300; 
 text-align: center;}
 body.environment #activity dl > dd > ul > li:first-child > em.sub-title {margin-top: 0;}
@@ -379,12 +373,10 @@ body.environment #activity p.desc {margin-bottom: 34px;}
 body.environment #activity dl > dd > ul > li > p.desc > span {color: #b1c712; font-weight: 500;}
 body.environment #activity dl > dd > ul > li.float-parent > div > p {font-size: 18px; font-weight: 300; line-height: 30px; padding-right: 40px; margin-top: 34px;}
 body.environment #activity #graph {padding: 80px 50px; background: #f5f5f5; overflow: hidden;}
-
 body.environment #activity #graph > li {float: left; width: 30.666%;}
 body.environment #activity #graph > li + li {margin-left: 4%;}
 body.environment #activity #graph > li > dl {position: relative;}
 body.environment #activity #graph > li > dl > dd {position: absolute;}
-
 body.environment #activity #campain {padding: 60px; background: #fafbf7;}
 body.environment #activity #campain > li.float-parent > img {width: 48%;}
 body.environment #activity #campain > li + li {width: 48%; margin-top: 55px;}
@@ -394,7 +386,6 @@ body.environment #activity #campain > li:nth-child(2)::before {background-image:
 body.environment #activity #campain > li:nth-child(3)::before {background-image: url(../img/environment-activity-in-04_2.png);}
 body.environment #activity #campain > li > em {display: block; width: 510px; height: 64px; padding-top: 3px; box-sizing: border-box; margin: 0 auto; text-align: center; color: #ffffff; font-size: 24px; font-weight: 600; line-height: 64px; background: #bfd715;}
 body.environment #activity #campain > li > p.desc {text-align: center;}
-
 body.environment #activity #education {padding-bottom: 90px;}
 body.environment #activity #education > ul {text-align: center; margin-bottom: 25px;}
 body.environment #activity #education > ul > li {width: 380px; height: 380px; border-radius: 50%; overflow: hidden; display: inline-block; position: relative;}
@@ -471,19 +462,6 @@ div.layout-box.row {padding: 0;}
 .slide.slide1 > ul.slide-text > li > em {display: block; font-size: 30px; line-height: 40px; font-weight: 700; margin-bottom: 30px;}
 .slide.slide1 > ul.slide-text > li > span {font-size: 14px;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 1220px) {
   #main-ir .col.bg > span {font-size: 40px;}
   div.layout {height: 400px;}
@@ -493,14 +471,15 @@ div.layout-box.row {padding: 0;}
   #main-ir .col.bg > ul {margin-top: 24px;}
 }
 
-
-
 /* animation keyframes */
+@keyframes show-up {
+  0% {transform: translate(0, 100px); opacity: 0;}
+  100% {transform: translate(0, 0); opacity: 1;}
+}
 @keyframes scroll-effect {
   0% {transform: translate(-50%, calc(-50% + 2px));}
   100% {transform: translate(-50%, calc(-50% + 12px));}
 }
-
 @keyframes main-visual-effect {
   0% {opacity: 0; transform: translate(0, 150%);}
   100% {opacity: 1; transform: none;}
