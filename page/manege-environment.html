@@ -331,12 +331,12 @@
                         <span>0</span>
                       </div>
                       <dl>
-                        <dt>2017</dt>
-                        <dd>55,958</dd>
-                        <dt>2018</dt>
-                        <dd>53,267</dd>
-                        <dt>2019</dt>
-                        <dd>55,781</dd>
+                        <dt>2017<span class="bar"></span></dt>
+                        <!-- <dd>55,958</dd> -->
+                        <dt>2018<span class="bar"></span></dt>
+                        <!-- <dd>53,267</dd> -->
+                        <dt>2019<span class="bar"></span></dt>
+                        <!-- <dd>55,781</dd> -->
                       </dl>
                     </li>
                     <li>
@@ -349,12 +349,12 @@
                         <span>0</span>
                       </div>
                       <dl>
-                        <dt>2017</dt>
-                        <dd>2,576</dd>
-                        <dt>2018</dt>
-                        <dd>2,482</dd>
-                        <dt>2019</dt>
-                        <dd>2,436</dd>
+                        <dt>2017<span class="bar"></span></dt>
+                        <!-- <dd>2,576</dd> -->
+                        <dt>2018<span class="bar"></span></dt>
+                        <!-- <dd>2,482</dd> -->
+                        <dt>2019<span class="bar"></span></dt>
+                        <!-- <dd>2,436</dd> -->
                       </dl>
                     </li>
                     <li>
@@ -367,12 +367,12 @@
                         <span>0</span>
                       </div>
                       <dl>
-                        <dt>2017</dt>
-                        <dd>5,222</dd>
-                        <dt>2018</dt>
-                        <dd>5,034</dd>
-                        <dt>2019</dt>
-                        <dd>4,939</dd>
+                        <dt>2017<span class="bar"></span></dt>
+                        <!-- <dd>5,222</dd> -->
+                        <dt>2018<span class="bar"></span></dt>
+                        <!-- <dd>5,034</dd> -->
+                        <dt>2019<span class="bar"></span></dt>
+                        <!-- <dd>4,939</dd> -->
                       </dl>
                     </li>
                   </ul>
@@ -624,6 +624,17 @@
         }
       }
     }
+
+        // main header
+      $(window).on('scroll', function() {
+      var scroll_top = $(this).scrollTop(); 
+      if(scroll_top > 0) {
+        $('#header').addClass('dark');
+      }
+      else if(scroll_top == 0) {
+        $('#header').toggleClass('dark');
+      }
+    });
 
     $('#sub-visual > nav > ol > li.nav > em > a').on('click', function() {
       $(this).parent().parent().toggleClass('open');
