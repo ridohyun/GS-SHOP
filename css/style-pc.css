@@ -361,7 +361,7 @@ body.environment #goal table tbody tr th ul li::before {content: ''; position: a
 body.environment #goal table tbody tr td {position: relative; text-indent: -9999px; overflow: hidden;}
 body.environment #goal table tbody tr td.circle::before {content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 25px; height: 25px; border: 3px solid #c2d922; border-radius: 50px;  box-sizing: border-box;}
 
-body.environment #activity {padding: 120px 0 140px !important;}
+body.environment #activity {padding: 120px 0 50px !important;}
 body.environment #activity dl > dt {padding: 60px 0 80px 0;}
 body.environment #activity dl > dd {padding: 0 5%;}
 body.environment #activity dl > dt:nth-child(3) {padding-top: 100px; background: #f5f5f5;}
@@ -373,10 +373,47 @@ body.environment #activity p.desc {margin-bottom: 34px;}
 body.environment #activity dl > dd > ul > li > p.desc > span {color: #b1c712; font-weight: 500;}
 body.environment #activity dl > dd > ul > li.float-parent > div > p {font-size: 18px; font-weight: 300; line-height: 30px; padding-right: 40px; margin-top: 34px;}
 body.environment #activity #graph {padding: 80px 50px; background: #f5f5f5; overflow: hidden;}
-body.environment #activity #graph > li {float: left; width: 30.666%;}
+body.environment #activity #graph > li {float: left; width: 30.666%; position: relative;}
 body.environment #activity #graph > li + li {margin-left: 4%;}
-body.environment #activity #graph > li > dl {position: relative;}
-body.environment #activity #graph > li > dl > dd {position: absolute;}
+body.environment #activity #graph > li > em {display: block; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;}
+body.environment #activity #graph > li > em + span {display: block; text-align: right; margin-bottom: 20px;}
+body.environment #activity #graph > li > .markig > span {display: block; margin-bottom: 90px; position: relative; font-size: 14px; font-weight: 700;}
+body.environment #activity #graph > li > .markig > span:last-child {margin-bottom: 20px;}
+body.environment #activity #graph > li > .markig > span::before {content: ''; position: absolute; width: calc(100% - 70px); height: 1px; background: #dddddd; left: 71px; top: 50%; transform: translate(0, -50%);}
+
+body.environment #activity #graph > li > dl {text-align: center; font-size: 14px; font-weight: 700; padding-left: 72px;}
+body.environment #activity #graph > li > dl > dt {display: inline-block; padding: 0; margin-right: 15px; position: relative;}
+body.environment #activity #graph  > li span.bar {position: absolute; width: 100%; height: 150px; background: rgb(83, 147, 154); bottom: calc(110% + 26px); left: 0;}
+body.environment #activity #graph > li span.bar:hover {opacity: 0.7;}
+body.environment #activity #graph  > li:nth-child(2) span.bar {background: rgb(173, 212, 181);}
+body.environment #activity #graph  > li:nth-child(3) span.bar {background: rgb(181, 198, 66);}
+
+
+
+
+
+body.environment #activity #graph > li > dl > dd {position: absolute; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body.environment #activity #campain {padding: 60px; background: #fafbf7;}
 body.environment #activity #campain > li.float-parent > img {width: 48%;}
 body.environment #activity #campain > li + li {width: 48%; margin-top: 55px;}
@@ -392,8 +429,8 @@ body.environment #activity #education > ul > li {width: 380px; height: 380px; bo
 body.environment #activity #education > ul > li:first-child {z-index: 100;}
 body.environment #activity #education > ul > li:nth-child(2) {z-index: 10;}
 body.environment #activity #education > ul > li + li {margin-left: -40px;}
-body.environment #activity #education > ul > li > img {width: 380px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; transition: width 0.5s;}
-body.environment #activity #education > ul > li:hover > img {width: 480px;}
+body.environment #activity #education > ul > li > img {width: 380px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; transition: 0.5s;}
+body.environment #activity #education > ul > li:hover > img {width: 480px; transform: translate(-50%, -50%) scale(1.2);}
 body.environment #activity #education .img-txt {text-align: center;}
 body.environment #activity #education .img-txt > span {display: inline-block;}
 body.environment #activity #education .img-txt > span + span {margin-left: 110px;}
@@ -401,11 +438,11 @@ body.environment #activity #education .img-txt > span + span {margin-left: 110px
 @media screen and (max-width: 1280px) {
   body.environment #activity #education > ul > li {width: 300px; height: 300px;}
   body.environment #activity #education > ul > li + li {margin-left: -30px;}
-  body.environment #activity #education > ul > li:hover > img {width: 380px;}
   body.environment #activity #education > ul > li > img {width: 300px;}
   body.environment #activity #education .img-txt > span + span {margin-left: 40px ;} 
 }
 
+body.environment #activity > dl > dd > ul > li:last-child {padding-bottom: 100px;}
 
 
 
